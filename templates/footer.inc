@@ -1,0 +1,3 @@
+<?=$header->loadScripts()?>
+</body>
+</html>
