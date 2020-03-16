@@ -1,7 +1,7 @@
 <?php
 	require 'config/initialize.inc';
 
-	if(isset($_POST) && !empty($_POST)) {
+	if(isset($_POST) && !empty($_POST) && ajax()) {
 		$user = new User($_POST);
 		if($user->authenticate()) {
 			$session->message($user->message, 'success');
