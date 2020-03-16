@@ -48,29 +48,28 @@
             return $this;
         }
 
-        public static function attach($file) {
-            $self = new self();
+        public function attach($file) {
             if(!$file || empty($file) || !is_array($file)) {
-                $self->errors[] = 'No file was uploaded.';
-                return $self;
+                $this->errors[] = 'No file was uploaded.';
+                return $this;
             }
             else if($file['error'] != 0) {
-                $self->errors[] = $self->upload_errors[$file['error']];
-                return $self;
+                $this->errors[] = $this->upload_errors[$file['error']];
+                return $this;
             }
-            else if(file_exists($self->upload_dir.DS.$file['name'])) {
-                $self->errors[] = 'File already exists.';
-                return $self;
+            else if(file_exists($this->upload_dir.DS.$file['name'])) {
+                $this->errors[] = 'File already exists.';
+                return $this;
             }
             else {
-                $self->_temp_path = $file['tmp_name'];
-                $self->_name = basename($file['name']);
-                $self->_type = $file['type'];
-                $self->_size = $file['size'];
-                $self->_user_id = $_SESSION['user_id'];
-                $self->_date = date('Y-m-d');
-                $self->_time = date('H:i:s');
-                return $self;
+                $this->_temp_path = $file['tmp_name'];
+                $this->_name = basename($file['name']);
+                $this->_type = $file['type'];
+                $this->_size = $file['size'];
+                $this->_user_id = $_SESSION['user_id'];
+                $this->_date = date('Y-m-d');
+                $this->_time = date('H:i:s');
+                return $this;
             }
         }
 
@@ -80,13 +79,13 @@
                 return false;
             }
             else if($this->create()) {
-                if (move_uploaded_file($this->_temp_path, $this->upload_dir)) {
+                if (move_uploaded_file($this->_temp_path, $this->getPath())) {
                     $this->message = 'File uploaded successfully.';
                     return true;
                 }
                 else {
                     global $db;
-                    $db->delete(self::TABLE_NAME, ['id' => $this->_id]);
+                    $db->delete(self::TABLE_NAME, array('id' => $this->_id));
                     $this->errors[] = 'Unable to upload file.';
                     return false;
                 }
@@ -111,6 +110,7 @@
         private function create() {
             global $db;
             if($db->insert(self::TABLE_NAME, $this->attributes())) {
+                $this->_id = $db->getLastInsertID();
                 return true;
             }
             else {
@@ -164,7 +164,7 @@
             global $db;
             $file = $db->search(self::TABLE_NAME, array('id' => $id), 'fetch');
             if($file) {
-                return self($file[0]);
+                return new self($file[0]);
             }
             else {
                 return null;

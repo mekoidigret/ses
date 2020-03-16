@@ -13,23 +13,39 @@
 			<div class="col-md-4 border-right">
 				<h3>Personal Information</h3>
 				<div class="input-group">
-					<input type="text" name="first_name" class="form-control" placeholder="First Name" required="">
+					<input type="text" name="first_name" class="form-control" placeholder="First Name" required="" value="<?=isset($detail) ? htmlentities($detail->first_name) : ''?>">
 				</div><br />
 				<div class="input-group">
-					<input type="text" name="last_name" class="form-control" placeholder="Last Name" required="">
+					<input type="text" name="last_name" class="form-control" placeholder="Last Name" required="" value="<?=isset($detail) ? htmlentities($detail->last_name) : ''?>">
 				</div><br />
 				<div class="input-group">
 					<select name="gender" class="form-control">
-						<option value="Male">Male</option>
-						<option value="Female">Female</option>
+						<option value="Male" <?php
+							if(isset($detail)) {
+								if($detail->gender == 'Male') {
+									echo 'selected';
+								}
+							}
+						?>>Male</option>
+						<option value="Female" <?php
+							if(isset($detail)) {
+								if($detail->gender == 'Female') {
+									echo 'selected';
+								}
+							}
+						?>>Female</option>
 					</select>
 				</div><br />
 				<div class="input-group">
-					<input type="number" name="age" class="form-control" placeholder="Age" required="">
+					<input type="number" name="age" class="form-control" placeholder="Age" required="" value="<?=isset($detail) ? $detail->age : ''?>">
 				</div>
 			</div>
 			<div class="col-md-4 border-right">
-				<img src="../assets/files/images/pps/blank.jpg" class="img-thumbnail">
+				<?php if($photo) { ?>
+					<img width="100" height="100" src="../assets/files/images/pps/<?=$photo->_name?>" class="img-thumbnail">
+				<?php } else { ?>
+					<img width="100" height="100" src="../assets/files/images/pps/blank.jpg" class="img-thumbnail">
+				<?php } ?>
 				<br />
                 <input type="hidden" name="MAX_FILE_SIZE" value="104857600">
                 Max File Size: 100MB<br />
@@ -38,16 +54,16 @@
 			<div class="col-md-4">
 				<h3>Address</h3>
 				<div class="input-group">
-					<input type="text" name="street" class="form-control" placeholder="Street" required="">
+					<input type="text" name="street" class="form-control" placeholder="Street" required="" value="<?=isset($address) ? htmlentities($address->street) : ''?>">
 				</div><br />
 				<div class="input-group">
-					<input type="text" name="brgy" class="form-control" placeholder="Barangay" required="">
+					<input type="text" name="brgy" class="form-control" placeholder="Barangay" required="" value="<?=isset($address) ? htmlentities($address->brgy) : ''?>">
 				</div><br />
 				<div class="input-group">
-					<input type="text" name="municipality" class="form-control" placeholder="Municipality" required="">
+					<input type="text" name="municipality" class="form-control" placeholder="Municipality" required="" value="<?=isset($address) ? htmlentities($address->municipality) : ''?>">
 				</div><br />
 				<div class="input-group">
-					<input type="text" name="city" class="form-control" placeholder="City" required="">
+					<input type="text" name="city" class="form-control" placeholder="City" required="" value="<?=isset($address) ? htmlentities($address->city) : ''?>">
 				</div>
 			</div>
 			<div style="margin-top: 20px;" class="col-md-12">

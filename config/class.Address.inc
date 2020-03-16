@@ -1,6 +1,7 @@
 <?php
 	class Address extends DatabaseObject {
 		public $user_id;
+		public $street;
 		public $brgy;
 		public $municipality;
 		public $city;
@@ -14,6 +15,7 @@
 			}
 			else {
 				$data = array(
+					'street' => $this->street,
 					'brgy' => $this->brgy,
 					'municipality' => $this->municipality,
 					'city' => $this->city

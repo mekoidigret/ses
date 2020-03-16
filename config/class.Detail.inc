@@ -5,6 +5,7 @@
 		public $last_name;
 		public $gender;
 		public $age;
+		public $photo_id;
 
 		const TABLE_NAME = 'details';
 

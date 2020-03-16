@@ -3,7 +3,11 @@
 		<div class="col-md-2 bg-dark text-light">
 			<div class="container text-center" style="margin-bottom: 10px;">
 				<div class="col-md-12 border-bottom" style="margin-top: 10px;">
-					<img src="../assets/files/images/pps/blank.jpg" class="img rounded-circle" height="100" width="100">
+					<?php if($photo) { ?>
+						<img src="../assets/files/images/pps/<?=$photo->_name?>" class="img rounded-circle" height="100" width="100">
+					<?php } else { ?>
+						<img src="../assets/files/images/pps/blank.jpg" class="img rounded-circle" height="100" width="100">
+					<?php } ?>
 					<h5>
 						<?=$_SESSION['user_username']?>
 					</h5>
