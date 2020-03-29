@@ -1,8 +1,32 @@
 <?php
 	class Session {
 
+		public $user_id;
+		public $user_access_level_id;
+		public $user_username;
+		private static $_instance = null;
+
+		private static $_keys = array(
+			'user_id',
+			'user_access_level_id',
+			'user_username'
+		);
+
 		public function __construct() {
 			session_start();
+			foreach(self::$_keys as $property) {
+				if(isset($_SESSION[$property])) {
+					$this->$property = $_SESSION[$property];
+				}
+			}
+			return $this;
+		}
+
+		public static function getInstance() {
+			if(!self::$_instance) {
+				self::$_instance = new self();
+			}
+			return self::$_instance;
 		}
 
 		public function message($msg='', $mode='info') {
@@ -40,6 +64,7 @@
 		public function login($user) {
 			foreach($user as $key => $value) {
 				$key = 'user_'.$key;
+				$this->$key = $value;
 				$_SESSION[$key] = $value;
 			}
 		}
@@ -47,6 +72,8 @@
 		public function logout() {
 			foreach($_SESSION as $key => $value) {
 				unset($_SESSION[$key]);
+				$this->$key = null;
+				unset($this->$key);
 			}
 		}
 
@@ -61,6 +88,7 @@
 				}
 			}
 			else if($_SESSION['user_access_level_id'] != $level) {
+				$this->logout();
 				if(ajax()) {
 					exit;
 				}

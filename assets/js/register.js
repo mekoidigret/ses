@@ -1,5 +1,5 @@
 $(document).ready(() => {
-	$('#login-form').submit(function(e) {
+	$('#register-form').submit(function(e) {
 		disableLink(e);
 		toggleSpinner(true);
 		$.post($(this).attr('action'), $(this).serialize(), result => {

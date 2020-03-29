@@ -1,7 +1,7 @@
 <?php
 	require '../config/initialize.inc';
 
-	$session->check(Admin::LEVEL);
+	$session->check(Student::LEVEL);
 
 	if(isset($_POST) && !empty($_POST)) {
         switch($_FILES['file_upload']['type']) {
@@ -51,6 +51,6 @@
         $photo = File::findByID($detail->photo_id);
     }
 	require '../templates/header.inc';
-	require '../templates/admin.settings.inc';
+	require '../templates/student.settings.inc';
 	require '../templates/footer.inc';
 ?>

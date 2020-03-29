@@ -11,11 +11,18 @@ container.loadHTML = function(data) {
 
 let loaded_scripts = [];
 
-function message(msg = '', mode = 'info') {
+function message(msg = '', mode = 'info', milliseconds = 4000) {
 	const message = '<div class="alert alert-' + mode + '">'
 		+ msg
 		+ '</div>';
-	$('#message-pane').html(message);
+	const mp = $('#message-pane');
+	mp.html(message);
+	setTimeout(() => {
+		mp.children().fadeOut();
+		setTimeout(() => {
+			mp.html('');
+		},1000);
+	}, milliseconds);
 }
 
 function disableLink(event) {

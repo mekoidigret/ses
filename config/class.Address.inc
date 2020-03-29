@@ -23,4 +23,8 @@
 				return $db->update(self::TABLE_NAME, $data, array('user_id' => $this->user_id));
 			}
 		}
+
+		public function __toString() {
+			return htmlentities($this->street.', '.$this->brgy.', '.$this->municipality.', '.$this->city);
+		}
 	}

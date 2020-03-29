@@ -25,10 +25,10 @@
 		}
 
 		public static function getInstance() {
-			if(!self::$_instance) {
-				self::$_instance = new self();
-			}
-			return self::$_instance;
+				if(!self::$_instance) {
+					self::$_instance = new self();
+				}
+				return self::$_instance;
 		}
 
 		public function query($sql) {
@@ -162,9 +162,6 @@
 					return null;
 				}
 			}
-			else if ($option == "count") {
-				return $result->rowCount();
-			}
 			else if ($option == "object") {
 				if($result->rowCount() > 0) {
 					$data_array = array();
@@ -177,6 +174,27 @@
 					return null;
 				}
 			}
+		}
+
+		public function count($table_name, $parameters) {
+			global $db;
+			$sql = 'SELECT * FROM '.$table_name.' '	
+				. 'WHERE ';
+			$multi = false;
+			foreach ($params as $key => $value) {
+				if($multi) {
+					$sql .= "AND " . $key . "=";
+					$sql .= gettype($value) == 'string' ? $this->quote($value) : $value;
+					$sql .= " ";
+				}
+				else {
+					$sql .= $key . "=";
+					$sql .= gettype($value) == 'string' ? $this->quote($value) : $value;
+					$sql .= " ";
+					$multi = true;
+				}
+			}
+			return $db->query($sql)->rowCount();
 		}
 
 		public function getLastInsertID() {

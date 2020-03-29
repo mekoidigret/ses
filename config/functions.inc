@@ -43,4 +43,10 @@
 	function selfUrl() {
 		return htmlentities($_SERVER['PHP_SELF']);
 	}
+
+	function generateID($byte_length = 13, $pseudo_byte_length = 13) {
+		$bytes = random_bytes(ceil($byte_length / 2));
+		$pseudo_byte = openssl_random_pseudo_bytes(ceil($pseudo_byte_length / 2));
+		return bin2hex($bytes).bin2hex($pseudo_byte);
+	}
 ?>

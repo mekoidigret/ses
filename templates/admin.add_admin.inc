@@ -29,7 +29,9 @@
 				if(data.status) {
 					$.get('admins.php', result => {
 						container.loadHTML(result);
-						message(data.message, 'success');
+						setTimeout(() => {
+							message(data.message, 'success');
+						}, 400);
 					});
 				}
 				else {

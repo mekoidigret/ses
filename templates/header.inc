@@ -15,11 +15,11 @@
 				}
 			</script>
 		</a>
-	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-	    	<span class="navbar-toggler-icon"></span>
-	  	</button>
-	  	<div class="collapse navbar-collapse" id="navbar">
-		  	<?php if(isset($_SESSION['user_id'])) { ?>
+		<?php if(isset($_SESSION['user_id'])) { ?>
+		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+		    	<span class="navbar-toggler-icon"></span>
+		  	</button>
+		  	<div class="collapse navbar-collapse" id="navbar">
 		  		<ul class="navbar-nav mr-auto">
 					<li class="nav-item <?php echo $header->title == 'Dashboard' ? 'active' : null; ?>">
 						<a id="nav-items" class="nav-link" data-script="dashboard" href="dashboard.php">&nbsp; <span class="sr-only">(current)</span></a>
@@ -28,7 +28,16 @@
 		    	<ul class="navbar-nav navbar-right">
 		    		<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<img src="../assets/files/svg/person.svg">
+							<img src="<?php
+								if(file_exists('../assets/files/svg/person.svg'))
+								{
+									echo '../assets/files/svg/person.svg';
+								}
+								else if(file_exists('assets/files/svg/person.svg'))
+								{
+									echo 'assets/files/svg/person.svg';
+								}
+							?>">
 						</a>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 			          		<a class="dropdown-item <?=$header->title == 'Settings' ? 'active' : null;?>" href="settings.php">Settings</a>
@@ -37,6 +46,6 @@
 			        	</div>
 					</li>
 		    	</ul>
-		  	<?php } ?>
-		</div>
+			</div>
+		<?php } ?>
 	</nav>

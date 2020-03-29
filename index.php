@@ -1,11 +1,27 @@
 <?php
 	require 'config/initialize.inc';
+	
+	if(isset($_SESSION['user_id'])) {
+		switch($_SESSION['user_access_level_id']) {
+			case Admin::LEVEL:
+				redirect('admin');
+				break;
+			case Student::LEVEL:
+				redirect('student');
+				break;
+		}
+	}
 
-	if(isset($_POST) && !empty($_POST) && ajax()) {
+	if(isset($_POST) && !empty($_POST)) {
 		$user = new User($_POST);
 		if($user->authenticate()) {
 			$session->message($user->message, 'success');
-			$session->login($user);
+			$data = array(
+				'id' => $user->id,
+				'access_level_id' => $user->access_level_id,
+				'username' => $user->username,
+			);
+			$session->login($data);
 			switch($user->access_level_id) {
 				case Admin::LEVEL:
 					$location = 'admin/dashboard.php';

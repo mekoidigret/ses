@@ -19,13 +19,18 @@
 				return $db->insert(self::TABLE_NAME, $this);
 			}
 			else {
+				$old_detail = self::findBySQL('SELECT * FROM '.self::TABLE_NAME.' WHERE user_id = '.$_SESSION['user_id']);
 				$data = array(
 					'first_name' => $this->first_name,
 					'last_name' => $this->last_name,
 					'gender' => $this->gender,
-					'age' => $this->age
+					'age' => $this->age,
+					'photo_id' => $this->photo_id
 				);
-				return $db->update(self::TABLE_NAME, $data, array('user_id' => $this->user_id));
+				if($db->update(self::TABLE_NAME, $data, array('user_id' => $this->user_id))) {
+					$file = File::findByID($old_detail->photo_id);
+					return $file->destroy();
+				}
 			}
 		}
 	}

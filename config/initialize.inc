@@ -6,5 +6,5 @@
 
 	 $database = Database::getInstance();
 	 $db =& $database;
-	 $session = new Session();
+	 $session = Session::getInstance();
 ?>

@@ -57,6 +57,8 @@
 					. join(' , ', array_values($data)).');';
 				try {
 					$db->query($sql);
+					$this->id = $db->getLastInsertID();
+					$this->message = 'User added successfully.';
 					return true;
 				}
 				catch(PDOException $e) {

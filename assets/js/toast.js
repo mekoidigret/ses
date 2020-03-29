@@ -1,8 +1,7 @@
 $(document).ready(() => {
 	$('[data-dismiss="toast"]').on('click', function(e) {
 		e.preventDefault();
-		const target = $(this).attr('data-target');
-		$(target).toast('hide');
+		$($(this).attr('data-target')).toast('hide');
 		e.stopImmediatePropagation();
 	});
 });

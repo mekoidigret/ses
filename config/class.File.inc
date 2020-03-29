@@ -17,12 +17,13 @@
             'name',
             'type', 
             'size', 
-            'user_id', 
+            'user_id',
+            'upload_dir',
             'date', 
             'time'
         );
 
-        public $upload_dir;
+        public $_upload_dir;
 
         protected $upload_errors = array(
 			UPLOAD_ERR_OK => "No errors.",
@@ -57,7 +58,7 @@
                 $this->errors[] = $this->upload_errors[$file['error']];
                 return $this;
             }
-            else if(file_exists($this->upload_dir.DS.$file['name'])) {
+            else if(file_exists($this->_upload_dir.DS.$file['name'])) {
                 $this->errors[] = 'File already exists.';
                 return $this;
             }
@@ -74,7 +75,7 @@
         }
 
         public function save() {
-            if(file_exists($this->upload_dir.DS.$this->_name)) {
+            if(file_exists($this->_upload_dir.DS.$this->_name)) {
                 $this->errors[] = 'File already exists.';
                 return false;
             }
@@ -149,7 +150,7 @@
         }
         
         public function getPath() {
-            return $this->upload_dir.DS.$this->_name;
+            return $this->_upload_dir.DS.$this->_name;
         }
 
         public function getDateUploaded() {
