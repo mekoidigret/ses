@@ -11,7 +11,7 @@
 				break;
 		}
 	}
-
+	
 	if(isset($_POST) && !empty($_POST)) {
 		$user = new User($_POST);
 		if($user->authenticate()) {
