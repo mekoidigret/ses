@@ -8,7 +8,8 @@
 			'student.dashboard'
 		)
 	));
-	$detail = Detail::findBySQL('SELECT * FROM '.Detail::TABLE_NAME.' WHERE user_id = '.$_SESSION['user_id']);
+	$sql = 'SELECT * FROM '.Detail::TABLE_NAME.' WHERE user_id = '.$_SESSION['user_id'];
+	$detail = Detail::findBySQL($sql);
 	$photo = null;
 	if($detail) {
 		$photo = File::findByID($detail->photo_id);

@@ -55,4 +55,10 @@
 				return null;
 			}
 		}
+
+		public static function countAll() {
+			global $db;
+			$sql = 'SELECT * FROM '.static::TABLE_NAME;
+			return $db->query($sql)->rowCount();
+		}
 	}

@@ -43,6 +43,7 @@
 			<?php } ?>
 		</tbody>
 	</table>
+	<?=$pagination?>
 	<script type="text/javascript">
 		if($(window).width() < 400) {
 			$('table[class="table table-sm"]').addClass('table-responsive');

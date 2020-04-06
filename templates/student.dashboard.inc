@@ -4,7 +4,7 @@
 			<div class="container text-center" style="margin-bottom: 10px;">
 				<div class="col-md-12 border-bottom" style="margin-top: 10px;">
 					<?php if($photo) { ?>
-						<img src="../assets/files/images/pps/<?=$photo->_name?>" class="img rounded-circle" height="100" width="100" style="box-shadow: 0 0 0 0.2rem rgba(220, 220, 220, 1);>
+						<img src="../assets/files/images/pps/<?=$photo->_name?>" class="img rounded-circle" height="100" width="100" style="box-shadow: 0 0 0 0.2rem rgba(220, 220, 220, 1);">
 					<?php } else { ?>
 						<img src="../assets/files/images/pps/blank.jpg" class="img rounded-circle" height="100" width="100" style="box-shadow: 0 0 0 0.2rem rgba(220, 220, 220, 1);>
 					<?php } ?>

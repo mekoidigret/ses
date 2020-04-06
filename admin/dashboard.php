@@ -10,7 +10,7 @@
 		)
 	));
 
-	$detail = Detail::findBySQL('SELECT * FROM '.Detail::TABLE_NAME.' WHERE user_id = '.$_SESSION['user_id']);
+	$detail = Detail::findBy('user_id', $_SESSION['user_id']);
 	$photo = null;
 	if($detail) {
 		$photo = File::findByID($detail->photo_id);

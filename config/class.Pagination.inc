@@ -70,5 +70,26 @@
 			}
 			return $output;
 		}
+
+		public function generateSQL($table_name, $options = array()) {
+			global $db;
+			$sql = 'SELECT * FROM '.$table_name.' ';
+			if(!empty($options)) {
+				$sql .= 'WHERE ';
+				$multi = false;
+				foreach($options as $column => $value) {
+					if($multi) {
+						$sql .= 'AND '.$column.' = '.$db->quote($value).' ';
+					}
+					else {
+						$sql .= $column.' = '.$db->quote($value).' ';
+					}
+					$multi = true;
+				}
+			}
+			$sql .= 'LIMIT '.$this->per_page.' '
+				. 'OFFSET '.$this->offset().' ';
+			return $sql;
+		}
 	}
 ?>
