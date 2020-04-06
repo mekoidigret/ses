@@ -14,6 +14,9 @@
 	if($detail) {
 		$photo = File::findByID($detail->photo_id);
 	}
+	else {
+		redirect('settings.php');
+	}
 
 	require '../templates/header.inc';
 	require '../templates/student.dashboard.inc';
