@@ -6,7 +6,8 @@
 	$header = new Header(array(
 		'title' => 'Dashboard',
 		'scripts' => array(
-			'admin.dashboard'
+			'admin.dashboard',
+			'chart.bundle.min'
 		)
 	));
 

@@ -9,6 +9,7 @@
 			<tr>
 				<th>ID</th>
 				<th>Username</th>
+				<th>Status</th>
 				<th class="text-center">Actions</th>
 			</tr>
 		</thead>
@@ -20,6 +21,9 @@
 					</td>
 					<td>
 						<?=htmlentities($student->username)?>
+					</td>
+					<td>
+						<?=htmlentities($student->status)?>
 					</td>
 					<td class="text-center">
 						<?php include '../templates/modal.applicants.inc'; ?>

@@ -5,6 +5,7 @@
 		public $last_name;
 		public $gender;
 		public $age;
+		public $school = null;
 		public $photo_id;
 
 		const TABLE_NAME = 'details';
@@ -25,6 +26,7 @@
 					'last_name' => $this->last_name,
 					'gender' => $this->gender,
 					'age' => $this->age,
+					'school' => $this->school,
 					'photo_id' => $this->photo_id
 				);
 				if($db->update(self::TABLE_NAME, $data, array('user_id' => $this->user_id))) {

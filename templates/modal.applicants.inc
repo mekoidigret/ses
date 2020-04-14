@@ -14,7 +14,12 @@
 				<?php
 					$detail = Detail::findBy('user_id', $student->id);
 					$address = Address::findBy('user_id', $student->id);
-					$requests = Request::findAllBySQL('SELECT * FROM '.Request::TABLE_NAME.' WHERE user_id = '.$student->id.' ORDER BY date DESC');
+					try {
+						$requests = Request::findAllBySQL('SELECT * FROM '.Request::TABLE_NAME.' WHERE user_id = '.$student->id.' ORDER BY date DESC');
+					}
+					catch(Exception $e) {
+						$requests = null;
+					}
 				?>
 				<h3>Details</h3>
 			<?php if($detail) { ?>
@@ -25,6 +30,7 @@
 								<th>Name</th>
 								<th>Age</th>
 								<th>Gender</th>
+								<th>School</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -37,6 +43,9 @@
 								</td>
 								<td>
 									<?=$detail->gender?>
+								</td>
+								<td>
+									<?=$detail->school?>
 								</td>
 							</tr>
 						</tbody>
@@ -97,7 +106,9 @@
 						</tbody>
 					</table>
 				</div>
-			<?php } ?>
+			<?php } else {
+				echo htmlentities($student->username).' does not have requests.';
+			} ?>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>

@@ -35,6 +35,10 @@
 		<div class="col-md-10" style="padding: 10px;">
 			<div id="container" class="container">
 				<?=$session->message()?>
+				<hr class="my-4">
+				<div class="text-center">
+					<canvas id="analytics"></canvas>
+				</div>
 			</div>
 		</div>
 	</div>

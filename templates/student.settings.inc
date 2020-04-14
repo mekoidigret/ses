@@ -50,6 +50,9 @@
                 <input type="hidden" name="MAX_FILE_SIZE" value="104857600">
                 Max File Size: 100MB<br />
                 <input type="file" name="file_upload" class="form-control-sm" required="">
+                <div class="input-group mt-4">
+                	<input type="text" class="form-control" name="school" placeholder="School" required="" value="<?=isset($detail) ? htmlentities($detail->school) : ''?>">
+                </div>
 			</div>
 			<div class="col-md-4">
 				<h3>Address</h3>
