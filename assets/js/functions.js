@@ -21,7 +21,7 @@ function message(msg = '', mode = 'info', milliseconds = 4000) {
 		mp.children().fadeOut();
 		setTimeout(() => {
 			mp.html('');
-		},1000);
+		}, 1000);
 	}, milliseconds);
 }
 

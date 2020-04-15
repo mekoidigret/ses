@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2020 at 02:23 PM
+-- Generation Time: Apr 15, 2020 at 03:59 AM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -62,6 +62,31 @@ CREATE TABLE `addresses` (
 INSERT INTO `addresses` (`user_id`, `street`, `brgy`, `municipality`, `city`) VALUES
 (2, 'Sta. Cruz', 'Lico-an', 'Barotac Nuevo', 'Iloilo'),
 (8, 'Sta. Cruz', 'Lico-an', 'Barotac Nuevo', 'Iloilo');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `analytics`
+--
+
+CREATE TABLE `analytics` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `full_name` varchar(100) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `school` varchar(20) NOT NULL,
+  `year` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `analytics`
+--
+
+INSERT INTO `analytics` (`id`, `full_name`, `gender`, `status`, `school`, `year`) VALUES
+(1, 'John Michael Manlupig', 'Male', 'Enrolled', 'ISCOF', 2015),
+(2, 'John Michael Manlupig', 'Male', 'Enrolled', 'ISCOF', 2015),
+(3, 'Noriel Sazon', 'Male', 'Enrolled', 'ISCOF', 2015),
+(4, 'Jane Doe', 'Female', 'Dropped', 'ISCOF', 2017);
 
 -- --------------------------------------------------------
 
@@ -176,6 +201,12 @@ ALTER TABLE `addresses`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `analytics`
+--
+ALTER TABLE `analytics`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `details`
 --
 ALTER TABLE `details`
@@ -213,6 +244,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `access_levels`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `analytics`
+--
+ALTER TABLE `analytics`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `files`

@@ -13,10 +13,12 @@
 
 
 -- Dumping database structure for ses
+DROP DATABASE IF EXISTS `ses`;
 CREATE DATABASE IF NOT EXISTS `ses` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `ses`;
 
 -- Dumping structure for table ses.access_levels
+DROP TABLE IF EXISTS `access_levels`;
 CREATE TABLE IF NOT EXISTS `access_levels` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type` varchar(50) NOT NULL,
@@ -31,6 +33,7 @@ INSERT INTO `access_levels` (`id`, `type`) VALUES
 /*!40000 ALTER TABLE `access_levels` ENABLE KEYS */;
 
 -- Dumping structure for table ses.addresses
+DROP TABLE IF EXISTS `addresses`;
 CREATE TABLE IF NOT EXISTS `addresses` (
   `user_id` int(10) unsigned NOT NULL,
   `street` varchar(150) NOT NULL,
@@ -48,7 +51,29 @@ INSERT INTO `addresses` (`user_id`, `street`, `brgy`, `municipality`, `city`) VA
 	(8, 'Sta. Cruz', 'Lico-an', 'Barotac Nuevo', 'Iloilo');
 /*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
 
+-- Dumping structure for table ses.analytics
+DROP TABLE IF EXISTS `analytics`;
+CREATE TABLE IF NOT EXISTS `analytics` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `full_name` varchar(100) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `school` varchar(20) NOT NULL,
+  `year` year(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table ses.analytics: ~0 rows (approximately)
+/*!40000 ALTER TABLE `analytics` DISABLE KEYS */;
+INSERT INTO `analytics` (`id`, `full_name`, `gender`, `status`, `school`, `year`) VALUES
+	(1, 'John Michael Manlupig', 'Male', 'Enrolled', 'ISCOF', '2015'),
+	(2, 'John Michael Manlupig', 'Male', 'Enrolled', 'ISCOF', '2015'),
+	(3, 'Noriel Sazon', 'Male', 'Enrolled', 'ISCOF', '2015'),
+	(4, 'Jane Doe', 'Female', 'Dropped', 'ISCOF', '2017');
+/*!40000 ALTER TABLE `analytics` ENABLE KEYS */;
+
 -- Dumping structure for table ses.details
+DROP TABLE IF EXISTS `details`;
 CREATE TABLE IF NOT EXISTS `details` (
   `user_id` int(11) unsigned NOT NULL,
   `first_name` varchar(255) NOT NULL,
@@ -71,6 +96,7 @@ INSERT INTO `details` (`user_id`, `first_name`, `last_name`, `gender`, `age`, `s
 /*!40000 ALTER TABLE `details` ENABLE KEYS */;
 
 -- Dumping structure for table ses.files
+DROP TABLE IF EXISTS `files`;
 CREATE TABLE IF NOT EXISTS `files` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) unsigned NOT NULL,
@@ -93,6 +119,7 @@ INSERT INTO `files` (`id`, `user_id`, `name`, `size`, `type`, `upload_dir`, `dat
 /*!40000 ALTER TABLE `files` ENABLE KEYS */;
 
 -- Dumping structure for table ses.requests
+DROP TABLE IF EXISTS `requests`;
 CREATE TABLE IF NOT EXISTS `requests` (
   `id` varchar(19) NOT NULL,
   `date` date NOT NULL,
@@ -111,6 +138,7 @@ INSERT INTO `requests` (`id`, `date`, `user_id`, `passed`) VALUES
 /*!40000 ALTER TABLE `requests` ENABLE KEYS */;
 
 -- Dumping structure for table ses.users
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `access_level_id` int(10) unsigned NOT NULL,
