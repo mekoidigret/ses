@@ -12,9 +12,9 @@ doc.ready(() => {
 	});
 
 	$.get('api.php', data => {
-		const analytics = $('#analytics');
-		const { enrolled, dropped, applicant } = data;
-		const chart = new Chart(analytics, {
+		const analytics_enrollment = $('#analytics-enrollment');
+		const { enrolled, dropped } = data;
+		const enrollment_chart = new Chart(analytics_enrollment, {
 			type: 'bar',
 			options: {
 				title: {
@@ -33,11 +33,7 @@ doc.ready(() => {
 					label: 'Dropped',
 					backgroundColor: 'rgb(50, 90, 150)',
 					data: Object.values(dropped),
-				},/*{
-					label: 'Applicants',
-					backgroundColor: 'rgb(125, 150, 185)',
-					data: Object.values(applicant),
-				}*/],
+				},],
 			}
 		});
 	}, 'json');

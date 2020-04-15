@@ -37,7 +37,8 @@
 				<?=$session->message()?>
 				<hr class="my-4">
 				<div class="text-center">
-					<canvas id="analytics"></canvas>
+					<canvas id="analytics-enrollment"></canvas>
+					<canvas id="analytics-gender"></canvas>
 				</div>
 			</div>
 		</div>
