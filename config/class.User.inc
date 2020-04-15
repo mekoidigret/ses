@@ -50,7 +50,7 @@
 					'username' => $db->quote($this->username),
 					'access_level_id' => static::LEVEL,
 					'password' => $db->quote(password_hash($this->password, PASSWORD_BCRYPT)),
-					'status' => $this->status
+					'status' => $db->quote($this->status)
 				);
 				$sql = 'INSERT INTO '.self::TABLE_NAME.' ('
 					. join(' , ', array_keys($data)).') '

@@ -1,7 +1,7 @@
 <?php
 	require 'config/initialize.inc';
 	
-	if(isset($_POST) && !empty($_POST) && ajax()) {
+	if(isset($_POST) && !empty($_POST)) {
 		$student = new Student($_POST);
 		if($student->save()) {
 			$session->message($student->message, 'success');
