@@ -27,11 +27,11 @@ doc.ready(() => {
 				labels: Object.keys(data.enrolled),
 				datasets:[{
 					label: 'Enrolled',
-					backgroundColor: 'rgb(200, 150, 90)',
+					backgroundColor: 'rgb(100, 150, 230)',
 					data: Object.values(enrolled),
 				},{
 					label: 'Dropped',
-					backgroundColor: 'rgb(50, 90, 150)',
+					backgroundColor: 'rgb(230, 100, 100)',
 					data: Object.values(dropped),
 				},],
 			}

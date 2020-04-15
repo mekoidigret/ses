@@ -25,6 +25,12 @@
 				</span>
 				Applicants
 			</a>
+			<a data-script="students" class="btn btn-outline-secondary w-100 text-light text-left font-weight-bold" href="students.php">
+				<span>
+					<img width="28" height="25" src="../assets/files/svg/person.svg">
+				</span>
+				Students
+			</a>
 			<a data-script="admins" class="btn btn-outline-secondary text-light w-100 text-left font-weight-bold" href="admins.php">
 				<span>
 					<img src="../assets/files/svg/lock.svg">

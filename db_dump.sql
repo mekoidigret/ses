@@ -58,18 +58,13 @@ CREATE TABLE IF NOT EXISTS `analytics` (
   `full_name` varchar(100) NOT NULL,
   `gender` varchar(6) NOT NULL,
   `status` varchar(20) NOT NULL,
-  `school` varchar(20) NOT NULL,
+  `school` varchar(255) NOT NULL,
   `year` year(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table ses.analytics: ~0 rows (approximately)
 /*!40000 ALTER TABLE `analytics` DISABLE KEYS */;
-INSERT INTO `analytics` (`id`, `full_name`, `gender`, `status`, `school`, `year`) VALUES
-	(1, 'John Michael Manlupig', 'Male', 'Enrolled', 'ISCOF', '2015'),
-	(2, 'John Michael Manlupig', 'Male', 'Enrolled', 'ISCOF', '2015'),
-	(3, 'Noriel Sazon', 'Male', 'Enrolled', 'ISCOF', '2015'),
-	(4, 'Jane Doe', 'Female', 'Dropped', 'ISCOF', '2017');
 /*!40000 ALTER TABLE `analytics` ENABLE KEYS */;
 
 -- Dumping structure for table ses.details
@@ -151,15 +146,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `username` (`username`),
   KEY `FK_users_access_levels` (`access_level_id`),
   CONSTRAINT `FK_users_access_levels` FOREIGN KEY (`access_level_id`) REFERENCES `access_levels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ses.users: ~3 rows (approximately)
+-- Dumping data for table ses.users: ~6 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `access_level_id`, `username`, `password`, `created`, `modified`, `status`) VALUES
 	(1, 2, 'mekkyinblack', '$2y$10$25sdXcIs94Nah/n/YRlY0.Diij5A.8ptuNrx2yTA84lcUUjEFPJHW', '2020-04-14 19:12:43', '2020-04-14 19:12:56', 'Applicant'),
 	(2, 2, 'admin', '$2y$10$j1Mjg8aeQNfoXkTHMC07IOiLTLf6BGDQBv.6ZCYM2PFJuC//kEHZa', '2020-04-14 19:12:43', '2020-04-14 19:12:56', 'Applicant'),
 	(8, 1, 'student', '$2y$10$pf7Nc3Tf7fDNT11J/gbi0.6nxfLGbynImWoLHfGK7zopGT1YSQzmO', '2020-04-14 19:12:43', '2020-04-14 19:24:34', 'Enrolled'),
-	(9, 1, 'mekoi', '$2y$10$VLl9onOnd/j41RzXkshPEOxK5munSFUo8qlG5XUuChLDV.gzATpeG', '2020-04-14 19:12:43', '2020-04-14 19:12:56', 'Applicant');
+	(9, 1, 'mekoi', '$2y$10$VLl9onOnd/j41RzXkshPEOxK5munSFUo8qlG5XUuChLDV.gzATpeG', '2020-04-14 19:12:43', '2020-04-14 19:12:56', 'Applicant'),
+	(10, 1, 'stud1', '$2y$10$OXp4R8wuyml/fQjVZp1I5O3LL5nXKB.FzokMsny1ZsTaW520cGqRu', '2020-04-15 12:55:21', '2020-04-15 12:55:21', 'Applicant'),
+	(11, 1, 'stud2', '$2y$10$Ze1IbyqI2X/K7vbYaABd2OgE0j6OvaGocsEcXGLqAvcEfyJvz80zO', '2020-04-15 12:55:45', '2020-04-15 12:55:45', 'Applicant');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

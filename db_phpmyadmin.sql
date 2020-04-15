@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2020 at 03:59 AM
+-- Generation Time: Apr 15, 2020 at 09:31 AM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -74,19 +74,9 @@ CREATE TABLE `analytics` (
   `full_name` varchar(100) NOT NULL,
   `gender` varchar(6) NOT NULL,
   `status` varchar(20) NOT NULL,
-  `school` varchar(20) NOT NULL,
+  `school` varchar(255) NOT NULL,
   `year` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `analytics`
---
-
-INSERT INTO `analytics` (`id`, `full_name`, `gender`, `status`, `school`, `year`) VALUES
-(1, 'John Michael Manlupig', 'Male', 'Enrolled', 'ISCOF', 2015),
-(2, 'John Michael Manlupig', 'Male', 'Enrolled', 'ISCOF', 2015),
-(3, 'Noriel Sazon', 'Male', 'Enrolled', 'ISCOF', 2015),
-(4, 'Jane Doe', 'Female', 'Dropped', 'ISCOF', 2017);
 
 -- --------------------------------------------------------
 
@@ -182,7 +172,9 @@ INSERT INTO `users` (`id`, `access_level_id`, `username`, `password`, `created`,
 (1, 2, 'mekkyinblack', '$2y$10$25sdXcIs94Nah/n/YRlY0.Diij5A.8ptuNrx2yTA84lcUUjEFPJHW', '2020-04-14 11:12:43', '2020-04-14 11:12:56', 'Applicant'),
 (2, 2, 'admin', '$2y$10$j1Mjg8aeQNfoXkTHMC07IOiLTLf6BGDQBv.6ZCYM2PFJuC//kEHZa', '2020-04-14 11:12:43', '2020-04-14 11:12:56', 'Applicant'),
 (8, 1, 'student', '$2y$10$pf7Nc3Tf7fDNT11J/gbi0.6nxfLGbynImWoLHfGK7zopGT1YSQzmO', '2020-04-14 11:12:43', '2020-04-14 11:24:34', 'Enrolled'),
-(9, 1, 'mekoi', '$2y$10$VLl9onOnd/j41RzXkshPEOxK5munSFUo8qlG5XUuChLDV.gzATpeG', '2020-04-14 11:12:43', '2020-04-14 11:12:56', 'Applicant');
+(9, 1, 'mekoi', '$2y$10$VLl9onOnd/j41RzXkshPEOxK5munSFUo8qlG5XUuChLDV.gzATpeG', '2020-04-14 11:12:43', '2020-04-14 11:12:56', 'Applicant'),
+(10, 1, 'stud1', '$2y$10$OXp4R8wuyml/fQjVZp1I5O3LL5nXKB.FzokMsny1ZsTaW520cGqRu', '2020-04-15 04:55:21', '2020-04-15 04:55:21', 'Applicant'),
+(11, 1, 'stud2', '$2y$10$Ze1IbyqI2X/K7vbYaABd2OgE0j6OvaGocsEcXGLqAvcEfyJvz80zO', '2020-04-15 04:55:45', '2020-04-15 04:55:45', 'Applicant');
 
 --
 -- Indexes for dumped tables
@@ -249,7 +241,7 @@ ALTER TABLE `access_levels`
 -- AUTO_INCREMENT for table `analytics`
 --
 ALTER TABLE `analytics`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `files`
@@ -261,7 +253,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

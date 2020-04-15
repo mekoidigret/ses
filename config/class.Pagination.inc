@@ -35,7 +35,7 @@
 		}
 
 		public function __toString() {
-			$output = "";
+			$output = "<div class=\"container\">";
 			if($this->total_pages() > 1) { 
 				$output .= "<nav aria-label=\"page-navigation\">";
 					$output .= "<ul class=\"pagination pagination-sm\">";
@@ -67,7 +67,16 @@
 					    }
 				  	$output .= "</ul>";
 				$output .= "</nav>";
+				$output .= "<script type=\"text/javascript\">";
+				if(file_exists('../assets/js/pagination.js')) {
+					$output .= file_get_contents('../assets/js/pagination.js');
+				}
+				else if(file_exists('assets/js/pagination.js')) {
+					$output .= file_get_contents('assets/js/pagination.js');
+				}
+				$output .= "</script>";
 			}
+			$output .= "</div>";
 			return $output;
 		}
 
