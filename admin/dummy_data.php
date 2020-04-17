@@ -28,7 +28,7 @@
 	$statuses = ['Enrolled', 'Dropped'];
 
 	for($i = 15; $i <= 20; $i++) {
-		for($x = 0; $x <= 1000; $x++) {
+		for($x = 0; $x <= 100; $x++) {
 			$full_name = bin2hex(random_bytes(ceil(13 / 2)));
 			$gender = $genders[rand(0,1)];
 			$school = $schools[rand(0,(count($schools) - 1))];
@@ -44,6 +44,5 @@
 			]);
 		}
 	}
-	exit;
-	// ---------------------------------------------------------------------------------------
+	redirect('dashboard.php');
 ?>

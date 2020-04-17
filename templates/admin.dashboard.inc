@@ -42,9 +42,13 @@
 			<div id="container" class="container">
 				<?=$session->message()?>
 				<hr class="my-4">
-				<div class="text-center">
-					<canvas id="analytics-enrollment"></canvas>
-					<canvas id="analytics-gender"></canvas>
+				<div class="row">
+					<div class="col-md-12">
+						<canvas id="analytics-enrollment"></canvas>
+					</div>
+					<div class="col-md-12">
+						<canvas id="analytics-gender"></canvas>
+					</div>					
 				</div>
 			</div>
 		</div>

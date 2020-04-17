@@ -12,28 +12,40 @@
 		$sql = 'SELECT * FROM analytics '
 			. 'WHERE year = '.$year.' '
 			. 'AND status = '.$db->quote('Enrolled');
-		$result = $db->query($sql);
-		$data['enrolled'][$year] = $result->rowCount();
-	}
-
-	for($i = 15; $i <= 20; $i++) {
-		$year = '20'.$i;
+		$data['enrolled'][$year] = $db->query($sql)->rowCount();
+		// --------------------------------------------------------------
+		$sql = 'SELECT * FROM analytics '
+			. 'WHERE year = '.$year.' '
+			. 'AND status = '.$db->quote('Enrolled').' '
+			. 'AND gender = '.$db->quote('Male');
+		$data['male']['enrolled'][$year] = $db->query($sql)->rowCount();
+		// --------------------------------------------------------------
+		$sql = 'SELECT * FROM analytics '
+			. 'WHERE year = '.$year.' '
+			. 'AND status = '.$db->quote('Enrolled').' '
+			. 'AND gender = '.$db->quote('Female');
+		$data['female']['enrolled'][$year] = $db->query($sql)->rowCount();
+		// --------------------------------------------------------------
 		$sql = 'SELECT * FROM analytics '
 			. 'WHERE year = '.$year.' '
 			. 'AND status = '.$db->quote('Dropped');
-		$result = $db->query($sql);
-		$data['dropped'][$year] = $result->rowCount();
+		$data['dropped'][$year] = $db->query($sql)->rowCount();
+		// --------------------------------------------------------------
+		$sql = 'SELECT * FROM analytics '
+			. 'WHERE year = '.$year.' '
+			. 'AND status = '.$db->quote('Dropped').' '
+			. 'AND gender = '.$db->quote('Male');
+		$data['male']['dropped'][$year] = $db->query($sql)->rowCount();
+		// --------------------------------------------------------------
+		$sql = 'SELECT * FROM analytics '
+			. 'WHERE year = '.$year.' '
+			. 'AND status = '.$db->quote('Dropped').' '
+			. 'AND gender = '.$db->quote('Female');
+		$data['female']['dropped'][$year] = $db->query($sql)->rowCount();
+		// --------------------------------------------------------------
 	}
-
-	// for($i = 15; $i <= 20; $i++) {
-	// 	$year = '20'.$i;
-	// 	$sql = 'SELECT * FROM analytics '
-	// 		. 'WHERE year = '.$year.' '
-	// 		. 'AND status = '.$db->quote('Applicant');
-	// 	$result = $db->query($sql);
-	// 	$data['applicant'][$year] = $result->rowCount();
-	// }
 	
 	header('Content-type: application/json');
 	echo json_encode($data);
+	exit;
 ?>
